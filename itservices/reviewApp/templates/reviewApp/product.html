@@ -1,0 +1,19 @@
+{% extends "reviewApp/base.html" %}
+{% block content %}
+	
+	<h1>Products</h1>
+
+	{% for product in products %}
+		<article class="media content-section">
+		  <div class="media-body">
+		    <div class="article-metadata">
+		      <a class="mr-2" href="#">{{ product.name }} ({{ product.brand }})</a>
+		      <small class="text-muted">{{ product.releasedate }}</small>
+		    </div>
+		    <h2><a class="article-title" href="#">{{ product.cost }} {{ product.category }}</a></h2>
+		    <p class="article-content">{{ product.description }}</p>
+		  </div>
+		</article>
+	{% endfor %}
+
+{% endblock content %}
