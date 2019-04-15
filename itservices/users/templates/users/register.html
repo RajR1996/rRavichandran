@@ -1,0 +1,23 @@
+{% extends "reviewApp/base.html" %}
+{% block content %}
+
+	<div class="container">
+		<form method="POST">
+			{% csrf_token %}
+
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Review App Registration Form</legend>
+				{{ form.as_p }}
+			</fieldset>
+
+			<div class="form-group">
+				<button class="btn btn-outline-success" type="submit">Register</button>
+			</div>
+		</form>
+
+		<div class="border-top pt-3">
+			<small>Have you already registered? <a class="ml-2" href="#">Login</a></small>		
+		</div>
+	</div>
+
+{% endblock content %}
