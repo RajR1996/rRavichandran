@@ -42,8 +42,12 @@
 	        </div>
 	        <!-- Navbar Right Side -->
 	        <div class="navbar-nav">
-	          <a class="nav-item nav-link btn-outline-success" href="#">Login</a>&nbsp;
-	          <a class="nav-item nav-link btn-outline-danger" href="#">Register</a>
+	        	{% if user.is_authenticated %}
+	          	<a class="nav-item nav-link btn btn-outline-warning" href="{% url 'logout' %}">Logout</a>
+	          {% else %}
+	          	<a class="nav-item nav-link btn-outline-success" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Login</a>&nbsp;
+	          	<a class="nav-item nav-link btn-outline-danger" href="{% url 'register' %}"><i class="fas fa-user-plus"></i> Register</a>
+	          {% endif %}
 	        </div>
 	      </div>
 	    </div>
