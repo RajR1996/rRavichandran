@@ -8,11 +8,25 @@
 				<img class="rounded-circle account-img" src="{{user.profile.profilephoto.url}}" style="max-width: 400px; max-height: 400px">
 			</p>
 			<div class="media-body">
-				<h2 class="account-heading">{{user.profile}}</h2>
-				<p class="text-secondary">{{user.username}}</p>
+				<h2 class="account-heading">{{user.username}}</h2>
 				<p class="text-secondary">{{user.email}}</p>
 			</div>
 		</div>
+
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Review App - Profile Details</legend>
+				<!-- {{ form.as_p }} -->
+				{{ u_form|crispy }}
+				{{ p_form|crispy }}
+			</fieldset>
+
+			<div class="form-group">
+				<button class="btn btn-outline-success" type="submit">Update</button>
+			</div>
+		</form>
 	</div>
 	<!-- <h1 class="jumbotron">{{ user.username }}</h1> -->
 
