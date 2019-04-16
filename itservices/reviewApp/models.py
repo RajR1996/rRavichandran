@@ -11,7 +11,7 @@ class Product(models.Model):
 	category = models.CharField(max_length=100)
 	releasedate = models.DateField()
 	description = models.TextField()
-	productphoto = models.ImageField(default='default_product.jpg', upload_to='reviewApp/static/product_images')
+	productphoto = models.ImageField(default='products/default_product.jpg', upload_to='products')
 
 class Review(models.Model):
 	product = models.ForeignKey(Product, on_delete=models.CASCADE)

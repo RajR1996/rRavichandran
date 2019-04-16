@@ -5,6 +5,7 @@
 
 	{% for product in products %}
 		<article class="media content-section">
+  		<img class="mr-3" src="{{product.productphoto.url}}" style="min-width: 150px; min-height: 150px;max-width: 150px; max-height: 150px">
 		  <div class="media-body">
 		    <div class="article-metadata">
 		      <span class="mr-2">{{ product.category }} - £{{ product.cost }}</span>
