@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.db import models
 from django.utils import timezone
 from users.models import Profile
@@ -13,15 +14,23 @@ class Product(models.Model):
 	description = models.TextField()
 	productphoto = models.ImageField(default='products/default_product.jpg', upload_to='products')
 
+	def __str__(self):
+		return self.name
+
+	def get_absolute_url(self):
+		return reverse('product-detail', kwargs={'pk':self.pk})
+
 class Review(models.Model):
 	product = models.ForeignKey(Product, on_delete=models.CASCADE)
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-	user = models.ForeignKey(User, on_delete=models.CASCADE)
-	author = models.CharField(max_length=100)
+	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	rating = models.PositiveSmallIntegerField(default=1, validators = [MinValueValidator(1), MaxValueValidator(5)])
 	reviewtext = models.TextField()
 	postdate = models.DateTimeField(auto_now_add=True)
 	lastmodified = models.DateTimeField(auto_now=True)
 
-def __str__(self):
-	return self.type
+	def __str__(self):
+		return f'Review for {self.product} by {self.author} on {self.postdate}'
+
+	def get_absolute_url(self):
+		return reverse('review-detail', kwargs={'pk':self.pk})

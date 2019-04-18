@@ -11,7 +11,7 @@
 		      <span class="mr-2">{{ product.category }} - £{{ product.cost }}</span>
 		      <small class="text-muted">{{ product.releasedate }}</small>
 		    </div>
-		    <h2><a class="article-title" href="#">{{ product.brand }} - {{ product.name }} </a></h2>
+		    <h2><a class="article-title" href="{% url 'product-detail' product.id %}">{{ product.brand }} - {{ product.name }} </a></h2>
 		    <p class="article-content">{{ product.description }}</p>
 		  </div>
 		</article>

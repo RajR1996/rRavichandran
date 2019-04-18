@@ -11,5 +11,5 @@ class Profile(models.Model):
 	country = models.CharField(max_length=100, null=True)
 	profilephoto = models.ImageField(default='profiles/default_profile.jpg', upload_to='profiles')
 
-def __str__(self):
-	return f'Profile for {self.user.username}'
+	def __str__(self):
+		return f'Profile for {self.user.username}'

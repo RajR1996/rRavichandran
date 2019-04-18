@@ -10,12 +10,19 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+  <link rel="shortcut icon" href="{% static '/favicon.ico' %}">
+
 	<!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+  <!-- <script>
+    $(function () {
+      $("#datetimepicker").datetimepicker();
+    });
+  </script> -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
 
   {% if title %}
@@ -39,6 +46,9 @@
 	          <a class="nav-item nav-link" href="{% url 'reviewApp-product' %}"><i class="fas fa-eye"></i> Products</a>
 	          <a class="nav-item nav-link" href="{% url 'reviewApp-about' %}"><i class="fas fa-info"></i> About</a>
 	          <a class="nav-item nav-link" href="{% url 'reviewApp-contact' %}"><i class="fas fa-address-card"></i> Contact</a>
+	          {% if user.is_superuser %}
+	          	<a class="nav-item nav-link" href="{% url 'product-create'%}"><i class="fas fa-plus-square"></i> Add Product</a>
+	          {% endif %}
 	        </div>
 	        <!-- Navbar Right Side -->
 	        <div class="navbar-nav">
@@ -55,8 +65,8 @@
 	  </nav>
 		</header>
 
-		<div class="row">
-			<div class="col-md-8">
+		<!-- <div class="row"> -->
+			<!-- <div class="col-md-8"> -->
 				{% if messages %}
 					{% for message in messages %}
 						<div class="alert alert-{{message.tags}}">
@@ -67,15 +77,15 @@
 
 				{% block content %}
 				{% endblock %}
-			</div>
-			<div class="col-md-4">
+			<!-- </div> -->
+			<!-- <div class="col-md-4">
 				<div class="content-section">
 	        <h3>General Information</h3>
 	        <p class='text-muted'>Lorem ipsum dolor sit amet, iudico docendi inciderint per eu, ea vis scripta senserit periculis.Lorem ipsum dolor sit amet, iudico docendi inciderint per eu, ea vis scripta senserit periculis.Lorem ipsum dolor sit amet, iudico docendi inciderint per eu, ea vis scripta senserit periculis.Lorem ipsum dolor sit amet, iudico docendi inciderint per eu, ea vis scripta senserit periculis.
 	        </p>
 	      </div>
-	    </div>
-		</div>
+	    </div> -->
+		<!-- </div> -->
 
 	</div>
 	

@@ -27,6 +27,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_HOST = 'smtp.zoho.eu'
+EMAIL_HOST_USER = 'django.reviewapp@zohomail.eu'
+EMAIL_HOST_PASSWORD = 'pythonapplication'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
 
 # Application definition
 
