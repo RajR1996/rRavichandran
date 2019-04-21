@@ -5,7 +5,7 @@
 		{% for prod in Products %}
 		<span>
 			<img class="rounded-square article-img" src="{{prod.productphoto.url}}" style="min-width: 150px; min-height: 150px;max-width: 150px; max-height: 150px">
-			<h1 class="article-title">{{ prod.brand }} {{ prod.name }}</h1>
+			<h1 class="article-title">Name: {{ prod.brand }} {{ prod.name }}</h1>
 			<h4 class="mr-2">Cost: £{{ prod.cost }}</h4>
 			<h4 class="mr-2">Category: {{ prod.category }}</h4>
 			<h4 class="mr-2">Release Date: {{ prod.releasedate }}</h4>
