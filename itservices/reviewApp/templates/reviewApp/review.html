@@ -26,23 +26,12 @@
 }
 </style>
 	
-	<h1>Products</h1>
+	<h1>Reviews</h1>
 	<div class="row">
 		<div class="col-md-8">
-		{% for product in products %}
-			<article class="media content-section" style="max-height: 170px;">
-	  		<img class="rounded-square article-img" src="{{product.productphoto.url}}" style="min-width: 150px; min-height: 150px;max-width: 150px; max-height: 150px">
-			  <div class="media-body">
-			    <div class="article-metadata">
-			      <span class="mr-2">{{ product.category }} - £{{ product.cost }}</span>
-			      <small class="text-muted">{{ product.releasedate }}</small>
-			    </div>
-			    <h2><a class="article-title" href="{% url 'product-detail' pk=product.id %}">{{ product.brand }} - {{ product.name }} </a></h2>
-		    	<span class="text-concat">
-		    		<p class="article-content" style="word-wrap: break-word;">{{ product.description }}</p>
-		    	</span>
-			  </div>
-			</article>
+		{% for review in reviews %}
+			<p>{{ review.rating }}</p>
+			<p>{{ review.reviewtext }}</p>
 		{% endfor %}
 		</div>
 		<div class="col-md-4">

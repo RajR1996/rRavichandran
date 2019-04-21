@@ -2,6 +2,8 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
+<form method="POST" enctype="multipart/form-data">
+	{% csrf_token %}
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6" style="float: left;">
@@ -16,24 +18,20 @@
 				</div>
 			</div>
 			<div class="col-md-6" style="float: right;">
-			<form method="POST" enctype="multipart/form-data">
-				{% csrf_token %}
 				{{ u_form|crispy }}
 			</div>
 		</div>
 
-		<div>
-			<div>
-				{{ p_form|crispy }}
-			</div>
+		<div class="row">
+			<div class="col-md-12">
+				{% crispy p_form %}
 
-			<div class="form-group">
-				<button class="btn btn-block btn-outline-success" type="submit">Update</button>
+				<div class="form-group">
+					<button class="btn btn-block btn-outline-success" type="submit">Update</button>
+				</div>
 			</div>
-
-			</form>
 		</div>
 	</div>
-	<!-- <h1 class="jumbotron">{{ user.username }}</h1> -->
+</form>
 
 {% endblock content %}

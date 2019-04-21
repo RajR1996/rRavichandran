@@ -1,0 +1,16 @@
+{% extends "reviewApp/base.html" %}
+{% block content %}
+	
+
+	<div class="col-md-6" style="float: right;">
+		{% for p in Products %}
+			<p>{{p.name}}</p>
+		{% endfor %}
+	</div>
+	<div class="col-md-6" style="float: right;">
+		{% for r in Reviews %}
+			<p>{{r.reviewtext}}</p>
+		{% endfor %}
+	</div>
+
+{% endblock content %}

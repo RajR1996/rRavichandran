@@ -30,6 +30,26 @@
 	{% else %}
 		<title>Review App</title>
 	{% endif %}
+
+	<style>
+		html {
+    	position: relative;
+    	min-height: 100%;
+		}
+		body {
+    	margin: 50px;
+    	/* bottom = footer height */
+    	padding: 25px;
+		}
+		footer {
+	    background-color: orange;
+	    position: absolute;
+	    left: 0;
+	    bottom: 0;
+	    width: 100%;
+	    overflow:hidden;
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -88,7 +108,12 @@
 		<!-- </div> -->
 
 	</div>
-	
+
+	<footer class="py-3 bg-steel">
+    <div class="container">
+      <p class="m-0 text-center text-light">Copyright &copy; Review App 2019</p>
+    </div>
+  </footer>
 
 </body>
 </html>

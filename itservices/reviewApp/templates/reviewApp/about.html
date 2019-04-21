@@ -3,13 +3,64 @@
 
 	<h1>About Us</h1>
 
-	<div class="row">
-	  <div class="column" id="aboutColumnLeft" style="float: left; max-width: 50%;">
-	  	<img src="https://www.python.org/static/community_logos/python-logo-master-v3-TM.png" alt="Python" style="max-height: 200px%;">
-	  </div>
-	  <div class="column" id="aboutColumnRight" style="float: right; max-width: 50%;">
-	  	<img src="https://quantilus.com/wp-content/uploads/2018/01/html5-css-javascript-logos.png" alt="HTML" style="max-height: 200px%;">
-	  </div>
+	<div class="container">
+		<div class="row">
+		  <div class="col-md-6" id="aboutColumnLeft" style="float: left;">
+		  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae urna porta, egestas mi quis, auctor enim. Vivamus vel sapien risus. Donec ullamcorper felis elit, nec varius massa cursus at. Donec eu tortor aliquet, tincidunt justo vitae, tempus tellus. Sed urna est, porta nec metus ac, pretium scelerisque dui. Nulla vel elit ut lorem vestibulum pharetra.</p>
+		  </div>
+		  <div class="col-md-6" id="aboutColumnRight" style="float: right;">
+		  	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae urna porta, egestas mi quis, auctor enim. Vivamus vel sapien risus. Donec ullamcorper felis elit, nec varius massa cursus at. Donec eu tortor aliquet, tincidunt justo vitae, tempus tellus. Sed urna est, porta nec metus ac, pretium scelerisque dui. Nulla vel elit ut lorem vestibulum pharetra.</p>
+		  </div>
+		</div>
+	</div><hr>
+	<div class="container">
+		<div class="card-deck mb-3 text-center">
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">Admin</h4>
+				</div>
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">Joe Bloggs</h1>
+					<ul class="list-unstyled mt-3 mb-4">
+						<li>Sheffield Hallam University Graduate</li>
+						<li>Studied Computer Science</li>
+						<li></li>
+						<li></li>
+					</ul>
+					<a class="btn btn-lg btn-block btn-outline-info" href="{% url 'reviewApp-contact' %}">Contact Us</a>
+				</div>
+			</div>
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">Developer</h4>
+				</div>
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">John Smith</h1>
+					<ul class="list-unstyled mt-3 mb-4">
+						<li>University of Sheffield Graduate</li>
+						<li>Studied Software Engineering</li>
+						<li></li>
+						<li></li>
+					</ul>
+					<a class="btn btn-lg btn-block btn-outline-info" href="{% url 'reviewApp-contact' %}">Contact Us</a>
+				</div>
+			</div>
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">Database Manager</h4>
+				</div>
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">Andy Robertson</h1>
+					<ul class="list-unstyled mt-3 mb-4">
+						<li>Leeds Beckett University Graduate</li>
+						<li>Studied Computing</li>
+						<li></li>
+						<li></li>
+					</ul>
+					<a class="btn btn-lg btn-block btn-outline-info" href="{% url 'reviewApp-contact' %}">Contact Us</a>
+				</div>
+			</div>
+		</div>
 	</div>
 
 {% endblock content %}

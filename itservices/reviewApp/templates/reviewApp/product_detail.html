@@ -2,22 +2,37 @@
 {% block content %}
 	
 	<div class="col-md-6" style="float: left;">
+		{% for prod in Products %}
 		<span>
-			<img class="rounded-square article-img" src="{{object.productphoto.url}}" style="min-width: 150px; min-height: 150px;max-width: 150px; max-height: 150px">
-			<h1 class="article-title">{{ object.brand }} {{ object.name }}</h1>
-			<h4 class="mr-2">Cost: £{{ object.cost }}</h4>
-			<h4 class="mr-2">Category: {{ object.category }}</h4>
-			<h4 class="mr-2">Release Date: {{ object.releasedate }}</h4>
-			<p class="article-content">{{ object.description }}</p>
+			<img class="rounded-square article-img" src="{{prod.productphoto.url}}" style="min-width: 150px; min-height: 150px;max-width: 150px; max-height: 150px">
+			<h1 class="article-title">{{ prod.brand }} {{ prod.name }}</h1>
+			<h4 class="mr-2">Cost: £{{ prod.cost }}</h4>
+			<h4 class="mr-2">Category: {{ prod.category }}</h4>
+			<h4 class="mr-2">Release Date: {{ prod.releasedate }}</h4>
+			<p class="article-content">{{ prod.description }}</p>
 		</span>
 		<span>
 			<!-- Need to check if user already has a review for item, if so they need to see Update Review -->
-			<a class="btn btn-primary" href="{% url 'review-create' object.id %}">Create Review</a>
+			<a class="btn btn-primary" href="{% url 'review-create' pk=prod.id %}">Create Review</a>
 		</span>
+		{% endfor %}
 	</div>
-	<div class="col-md-6" style="float: right;">
-		{% for review in reviews %}
-			{{review.text}}
+	<div class="col-md-3">
+	</div>
+	<div class="col-md-3" style="float: right;">
+		{% for rev in Reviews %}
+		<div class="card" style="width: 18rem;">
+				<!-- <p>Prof</p> -->
+				{% for prof in Profiles %}
+					<img class="card-img-top rounded circle" src="{{ prof.profilephoto.url }}" style="max-width: 80px; max-height: 80px">
+				{% endfor %}
+			<!-- <img class="card-img-top" src="..."> -->
+		  <div class="card-body">
+		    <h5 class="card-title">{{ rev.rating }}/5</h5>
+		    <h6 class="card-subtitle mb-2 text-muted">Reviewed by {{ rev.author }}</h6>
+		    <p class="card-text">{{ rev.reviewtext }}</p>
+		  </div>
+		</div><hr>
 		{% endfor %}
 	</div>
 
