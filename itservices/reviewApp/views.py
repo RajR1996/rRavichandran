@@ -43,6 +43,7 @@ class ProductListView(ListView):
 	template_name = 'reviewApp/product.html'
 	context_object_name = 'products'
 	ordering = ['-releasedate']
+	paginate_by = 3
 
 # class ProductDetailView(DetailView):
 # 	model = Product
