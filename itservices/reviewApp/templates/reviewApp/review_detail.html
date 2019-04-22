@@ -2,12 +2,18 @@
 {% block content %}
 	
 	<div class="col-md-6" style="float: left;">
+		<h1>Product</h1>
 		<span>
-			<!-- <img class="rounded-square article-img" src="{{object.productphoto.url}}" style="min-width: 150px; min-height: 150px;max-width: 150px; max-height: 150px"> -->
-			<h1 class="article-title">{{ object.product }} {{ object.profile }}</h1>
-			<h4 class="mr-2">Author: £{{ object.author }}</h4>
-			<h4 class="mr-2">Rating: {{ object.rating }}</h4>
-			<p class="article-content">{{ object.description }}</p>
+			<span align="center">
+				<img class="rounded-square article-img" src="{{object.product.productphoto.url}}" style="min-width: 150px; min-height: 150px;max-width: 150px; max-height: 150px" align="center">
+			</span>
+			<h1 class="article-title">{{ object.product.brand }} {{ object.product }}</h1>
+			<h4 class="mr-2">Cost: {{ object.product.cost }}</h4>
+			<h4 class="mr-2">Release Date: {{ object.product.releasedate|date:"d/m/Y" }}</h4>
+			<span>
+				<h4 class="mr-2">Description: </h4>
+				<p class="article-content">{{ object.product.description }}</p>
+			</span>
 		</span>
 		<span>
 			<!-- Need to check if user already has a review for item, if so they need to see Update Review -->
@@ -15,6 +21,14 @@
 		</span>
 	</div>
 	<div class="col-md-6" style="float: right;">
+		<h1>Review</h1>
+		<img class="rounded-square article-img" src="{{object.profile.profilephoto.url}}" style="min-width: 150px; min-height: 150px;max-width: 150px; max-height: 150px">
+		<h4 class="mr-2">Author: {{ object.author }}</h4>
+		<h4 class="mr-2">Rating: {{ object.rating }}</h4>
+		<span>
+			<h4 class="mr-2">Review: </h4>
+			<p class="article-content">{{ object.reviewtext }}</p>
+		</span>
 	</div>
 
 {% endblock content %}

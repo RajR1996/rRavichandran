@@ -27,26 +27,21 @@
 </style>
 	
 	<h1>Reviews</h1>
-	<div class="row">
-		<div class="col-md-8">
-		{% for review in reviews %}
-			<p>{{ review.rating }}</p>
-			<p>{{ review.reviewtext }}</p>
+
+	<div class="col-md-6" style="float: left;">
+		{% for review in Reviews %}
+		<span>
+			<img class="rounded-circle article-img" src="{{ review.profile.profilephoto.url }}" style="min-width: 80px; min-height: 80px;max-width: 80px; max-height: 80px">
+			<h1 class="article-title">{{ review.product.brand }} {{ review.product.name }}</h1>
+			<h4 class="mr-2">Rating: {{ review.rating }}</h4>
+			<p class="article-content">Review: {{ review.reviewtext }}</p>
+		</span>
+		<span>
+			<!-- Need to check if user already has a review for item, if so they need to see Update Review -->
+			<!-- <a class="btn btn-primary" href="{% url 'review-create' pk=review.id %}">Create Review</a> -->
+		</span>
 		{% endfor %}
-		</div>
-		<div class="col-md-4">
-			<div class="content-section">
-				<h3>Lorem Ipsum</h3>
-				<p class='text-muted'>
-					Lorem ipsum dolor sit amet, iudico docendi inciderint per eu, ea vis scripta senserit periculis. Lorem ipsum dolor sit amet, iudico docendi inciderint per eu, ea vis scripta senserit periculis.
-				</p>
-			</div>
-			<div class="content-section">
-				<h3>Lorem Ipsum</h3>
-				<p class='text-muted'>
-					Lorem ipsum dolor sit amet, iudico docendi inciderint per eu, ea vis scripta senserit periculis. Lorem ipsum dolor sit amet, iudico docendi inciderint per eu, ea vis scripta senserit periculis.
-			</div>
-		</div>
 	</div>
+
 
 {% endblock content %}

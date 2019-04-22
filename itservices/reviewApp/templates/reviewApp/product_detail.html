@@ -1,39 +1,55 @@
 {% extends "reviewApp/base.html" %}
 {% block content %}
-	
-	<div class="col-md-6" style="float: left;">
-		{% for prod in Products %}
-		<span>
-			<img class="rounded-square article-img" src="{{prod.productphoto.url}}" style="min-width: 150px; min-height: 150px;max-width: 150px; max-height: 150px">
-			<h1 class="article-title">Name: {{ prod.brand }} {{ prod.name }}</h1>
-			<h4 class="mr-2">Cost: £{{ prod.cost }}</h4>
-			<h4 class="mr-2">Category: {{ prod.category }}</h4>
-			<h4 class="mr-2">Release Date: {{ prod.releasedate }}</h4>
-			<p class="article-content">{{ prod.description }}</p>
-		</span>
-		<span>
-			<!-- Need to check if user already has a review for item, if so they need to see Update Review -->
-			<a class="btn btn-primary" href="{% url 'review-create' pk=prod.id %}">Create Review</a>
-		</span>
-		{% endfor %}
-	</div>
-	<div class="col-md-3">
-	</div>
-	<div class="col-md-3" style="float: right;">
-		{% for rev in Reviews %}
-		<div class="card" style="width: 18rem;">
-				<!-- <p>Prof</p> -->
-				{% for prof in Profiles %}
-					<img class="card-img-top rounded circle" src="{{ prof.profilephoto.url }}" style="max-width: 80px; max-height: 80px">
-				{% endfor %}
-			<!-- <img class="card-img-top" src="..."> -->
-		  <div class="card-body">
-		    <h5 class="card-title">{{ rev.rating }}/5</h5>
-		    <h6 class="card-subtitle mb-2 text-muted">Reviewed by {{ rev.author }}</h6>
-		    <p class="card-text">{{ rev.reviewtext }}</p>
-		  </div>
-		</div><hr>
-		{% endfor %}
+	<div class="row">
+		<div class="col-md-6" style="float: left;">
+			{% for prod in Products %}
+			<span>
+				<img class="rounded-square article-img" src="{{prod.productphoto.url}}" style="min-width: 150px; min-height: 150px;max-width: 150px; max-height: 150px">
+				<h1 class="article-title">Name: {{ prod.brand }} {{ prod.name }}</h1>
+				<h4 class="mr-2">Cost: £{{ prod.cost }}</h4>
+				<h4 class="mr-2">Category: {{ prod.category }}</h4>
+				<h4 class="mr-2">Release Date: {{ prod.releasedate|date:"d/m/Y" }}</h4>
+				<p class="article-content">{{ prod.description }}</p>
+			</span>
+				{% if user.is_authenticated %}
+				<span>
+					{% if Action.count == 1 %}
+						<p>Update</p>
+					{% else %}
+						<a class="btn btn-primary" href="{% url 'review-create' pk=prod.id %}">Create Review</a>
+					{% endif %}
+				</span>
+				{% endif %}
+			{% endfor %}
+		</div>
+		<div class="col-md-3" align="center">
+			<div>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae urna porta, egestas mi quis, auctor enim. Vivamus vel sapien risus. Donec ullamcorper felis elit, nec varius massa cursus at. Donec eu tortor aliquet, tincidunt justo vitae, tempus tellus. Sed urna est, porta nec metus ac, pretium scelerisque dui.
+				</p>
+			</div>
+		</div>
+		<div class="col-md-3" style="float: right;">
+			{% for rev in Reviews %}
+			<div class="card" style="width: 18rem;">
+				<div class="row" style="padding-top: 5%;">
+					<div class="col-md-3" style="float: left; margin-left: 1%;">
+						<img class="card-img-top rounded-circle" src="{{ rev.profile.profilephoto.url }}" style="max-width: 60px; max-height: 60px">
+					</div>
+					<div class="col-md-8" style="float: right;">
+						<h5 class="card-title">{{ rev.rating }}/5</h5>
+			    	<h6 class="card-subtitle mb-2">Reviewed by {{ rev.author }}</h6>
+					</div>
+				</div>
+			  <div class="card-body">
+			    <p class="card-text">{{ rev.reviewtext }}</p>
+			  </div>
+			  <span class="card-footer">
+			  	<small class="text-muted">Posted On {{ rev.postdate|date:"d/m/Y H:iA" }}</small>
+			  </span>
+			</div><hr>
+			{% endfor %}
+		</div>
 	</div>
 
 {% endblock content %}
