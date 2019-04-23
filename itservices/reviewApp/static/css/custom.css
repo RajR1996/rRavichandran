@@ -1,0 +1,54 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	margin: 50px;
+	/* bottom = footer height */
+	padding: 25px;
+}
+footer {
+  background-color: orange;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  overflow:hidden;
+}
+#homeleft {
+	float: left;
+}
+#homeright {
+	float: right;
+}
+#contactImage {
+	max-width: 350px; 
+	max-height: 225px; 
+	padding-bottom: 10px;"
+}
+#prodDetColLeft {
+	float: left;
+}
+#prodDetailProdImage {
+	min-width: 300px; 
+	min-height: 220px; 
+	max-width: 300px; 
+	max-height: 220px;
+}
+#prodDetailAuthButtons {
+	margin: 0 auto;
+}
+#prodDetailProfImage {
+	max-width: 60px; 
+	max-height: 60px
+}
+#revConfDelProdImage {
+	min-width: 100px; 
+	min-height: 100px;
+	max-width: 100px; 
+	max-height: 100px;
+}
+#revConfDelProfImage {
+	max-width: 60px; 
+	max-height: 60px
+}

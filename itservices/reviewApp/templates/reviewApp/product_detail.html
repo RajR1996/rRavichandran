@@ -1,10 +1,10 @@
 {% extends "reviewApp/base.html" %}
 {% block content %}
 	<div class="row">
-		<div class="col-md-4" style="float: left;">
+		<div class="col-md-4" id="prodDetColLeft">
 			{% for prod in Products %}
 			<span>
-				<img class="rounded-square article-img" src="{{prod.productphoto.url}}" style="min-width: 300px; min-height: 220px; max-width: 300px; max-height: 220px;">
+				<img class="rounded-square article-img" src="{{prod.productphoto.url}}" id="prodDetailProdImage">
 			</span>
 		</div>
 		<div class="col-md-4" align="center">
@@ -28,7 +28,7 @@
 			<div class="card" style="width: 18rem;">
 				<div class="row" style="padding-top: 5%;">
 					<div class="col-md-3" style="float: left; margin-left: 1%;">
-						<img class="card-img-top rounded-circle" src="{{ rev.profile.profilephoto.url }}" style="max-width: 60px; max-height: 60px">
+						<img class="card-img-top rounded-circle" src="{{ rev.profile.profilephoto.url }}" id="prodDetailProfImage">
 					</div>
 					<div class="col-md-8" style="float: right;">
 						<h5 class="card-title">{{ rev.rating }}/5</h5>
@@ -38,7 +38,7 @@
 			  <div class="card-body">
 			    <p class="card-text">{{ rev.reviewtext }}</p>
 			    {% if rev.author == user %}
-			    	<div style="margin: 0 auto;">	
+			    	<div id="prodDetailAuthButtons">	
 			    		<a class="btn btn-warning btn-sm" href="{% url 'review-update' pk=rev.id %}">Update</a>&nbsp;
 			    		<a class="btn btn-danger btn-sm" href="{% url 'review-delete' pk=rev.id %}">Delete</a>
 			    	</div>

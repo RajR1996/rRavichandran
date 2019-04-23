@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.db import models
-from .models import Product, Review, Profile, User
+from .models import Product, Review, Profile, User, Error
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
@@ -38,6 +38,8 @@ def product(request):
 	}
 	return render(request, 'reviewApp/product.html', all_products)
 
+#Products
+
 class ProductListView(ListView):
 	model = Product
 	template_name = 'reviewApp/product.html'
@@ -64,6 +66,16 @@ class ProductDetailView(LoginRequiredMixin ,TemplateView):
 		#context['Profiles'] = Profile.objects.filter(id__in=profile_ids)
 		return context
 
+class ProductCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+	model = Product
+	fields = ['name', 'brand', 'cost', 'category', 'releasedate', 'description', 'productphoto']
+	def test_func(self):
+		if self.request.user.is_superuser:
+			return True
+		return False
+
+#Reviews
+
 class ReviewListView(TemplateView):
 	#model = Review
 	template_name = 'reviewApp/review.html'
@@ -76,10 +88,6 @@ class ReviewListView(TemplateView):
 		# context['Products'] = Product.objects.filter(id__in=product_ids)
 		# context['Profiles'] = Profile.objects.filter(id__in=profile_ids)
 		return context
-
-class ProductCreateView(LoginRequiredMixin, CreateView):
-	model = Product
-	fields = ['name', 'brand', 'cost', 'category', 'releasedate', 'description', 'productphoto']
 
 class ReviewCreateView(LoginRequiredMixin, CreateView):
 	model = Review
@@ -113,3 +121,21 @@ class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 		if self.request.user == review.author:
 			return True
 		return False
+
+# Errors
+
+class ErrorListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+	model = Error
+	template_name = 'reviewApp/error.html'
+	context_object_name = 'errors'
+	ordering = ['-reportdate']
+	paginate_by = 3
+	def test_func(self):
+		if self.request.user.is_superuser:
+			return True
+		return False
+
+class ErrorCreateView(CreateView):
+	model = Error
+	fields = ['type', 'page', 'description']
+	

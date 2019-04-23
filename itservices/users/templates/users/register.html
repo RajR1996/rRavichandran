@@ -15,11 +15,18 @@
 			<div class="form-group">
 				<button class="btn btn-outline-success" type="submit">Register</button>
 			</div>
-		</form>
+		</form><hr>
 
-		<div class="border-top pt-3">
-			<small>Have you already registered? <a class="ml-2" href="{% url 'login' %}">Login</a></small>		
+		<div class="row">
+			<div class="col-md-6">
+				<p>Already registered?</p>
+				<a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+			</div>
 		</div>
+
+		<!-- <div class="border-top pt-3">
+			<small>Have you already registered? <a class="ml-2" href="{% url 'login' %}">Login</a></small>		
+		</div> -->
 	</div>
 
 {% endblock content %}

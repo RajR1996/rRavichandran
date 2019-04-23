@@ -13,13 +13,24 @@
 			<div class="form-group">
 				<button class="btn btn-outline-success" type="submit">Login</button>				
 			</div>
-		</form>	
+		</form><hr>
 
-		<div class="border-top pt-3">
+		<div class="row">
+			<div class="col-md-6">
+				<p>Forgotten Your Password?</p>
+				<a class="btn btn-warning" href="{% url 'password_reset' %}">Reset Password</a>
+			</div>
+			<div class="col-md-6">
+				<p>Don't have an account?</p>
+				<a class="btn btn-danger" href="{% url 'register' %}">Register</a>
+			</div>
+		</div>
+
+		<!-- <div class="border-top pt-3">
 			<small class="text-muted">Don't have an account? 
 				<a class="ml-2" href="{% url 'register' %}" >Register</a>
 			</small>			
-		</div>
+		</div> -->
 	</div>
 
 {% endblock content %}

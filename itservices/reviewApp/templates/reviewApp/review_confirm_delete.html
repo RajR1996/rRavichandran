@@ -12,7 +12,7 @@
 				<div class="card" style="width: 18rem;">
 					<div class="row" style="padding-top: 5%;">
 						<div class="col-md-3" style="float: left; margin-left: 1%;">
-							<img class="card-img-top rounded-circle" src="{{ object.profile.profilephoto.url }}" style="max-width: 60px; max-height: 60px">
+							<img class="card-img-top rounded-circle" src="{{ object.profile.profilephoto.url }}" id="revConfDelProfImage">
 						</div>
 						<div class="col-md-8" style="float: right;">
 							<h5 class="card-title">{{ object.rating }}/5</h5>
@@ -37,7 +37,7 @@
 			<div class="col-md-6" style="float: right;">
 				<div class="content-section">
 					<span>
-						<img class="rounded-square article-img" src="{{object.product.productphoto.url}}" style="min-width: 100px; min-height: 100px;max-width: 100px; max-height: 100px">
+						<img class="rounded-square article-img" src="{{object.product.productphoto.url}}" id="revConfDelProdImage">
 					</span>
 					<h3 class="article-title">Name: {{ object.product.brand }} {{ object.product.name }}</h3>
 					<h4 class="mr-2">Cost: £{{ object.product.cost }}</h4>

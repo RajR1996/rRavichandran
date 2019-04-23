@@ -34,3 +34,15 @@ class Review(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('review-detail', kwargs={'pk':self.pk})
+
+class Error(models.Model):
+	type = models.CharField(max_length=50)
+	page = models.CharField(max_length=100)
+	description = models.TextField()
+	reportdate = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return f'Error {self.type} reported on {self.reportdate}'
+
+	def get_absolute_url(self):
+		return reverse('reviewApp-home')

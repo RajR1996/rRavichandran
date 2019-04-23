@@ -24,6 +24,7 @@
     });
   </script> -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}" />
 
   {% if title %}
 		<title>Review App - {{ title }}</title>
@@ -31,25 +32,6 @@
 		<title>Review App</title>
 	{% endif %}
 
-	<style>
-		html {
-    	position: relative;
-    	min-height: 100%;
-		}
-		body {
-    	margin: 50px;
-    	/* bottom = footer height */
-    	padding: 25px;
-		}
-		footer {
-	    background-color: orange;
-	    position: absolute;
-	    left: 0;
-	    bottom: 0;
-	    width: 100%;
-	    overflow:hidden;
-		}
-	</style>
 </head>
 <body>
 	<div class="container">
@@ -69,6 +51,9 @@
 	          <a class="nav-item nav-link" href="{% url 'reviewApp-contact' %}"><i class="fas fa-address-card"></i> Contact</a>
 	          {% if user.is_superuser %}
 	          	<a class="nav-item nav-link" href="{% url 'product-create'%}"><i class="fas fa-plus-square"></i> Add Product</a>
+	          	<a class="nav-item nav-link" href="{% url 'reviewApp-error'%}"><i class="fas fa-plus-square"></i> View Errors</a>
+	          {% else %}
+	          	<a class="nav-item nav-link" href="{% url 'error-create' %}"><i class="fas fa-address-card"></i> Report Error</a>
 	          {% endif %}
 	        </div>
 	        <!-- Navbar Right Side -->

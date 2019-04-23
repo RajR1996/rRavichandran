@@ -1,6 +1,6 @@
 {% extends "reviewApp/base.html" %}
 {% block content %}
-<style>
+<!-- <style>
 	.text {
   position: relative;
   /*font-size: 14px;*/
@@ -24,7 +24,7 @@
   right: 12px; 
   bottom: 4px;
 }
-</style>
+</style> -->
 	
 	<h1>Reviews</h1>
 
@@ -36,12 +36,7 @@
 			<h4 class="mr-2">Rating: {{ review.rating }}</h4>
 			<p class="article-content">Review: {{ review.reviewtext }}</p>
 		</span>
-		<span>
-			<!-- Need to check if user already has a review for item, if so they need to see Update Review -->
-			<!-- <a class="btn btn-primary" href="{% url 'review-create' pk=review.id %}">Create Review</a> -->
-		</span>
 		{% endfor %}
 	</div>
-
 
 {% endblock content %}
