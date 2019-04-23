@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.db import models
 from .models import Product, Review, Profile, User
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.contrib import messages
@@ -49,7 +49,7 @@ class ProductListView(ListView):
 # 	model = Product
 # 	reviews = Review.objects.all()
 
-class ProductDetailView(TemplateView):
+class ProductDetailView(LoginRequiredMixin ,TemplateView):
 	# template_name = 'reviewApp/test.html'
 	template_name = 'reviewApp/product_detail.html'
 
@@ -84,7 +84,6 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
 class ReviewCreateView(LoginRequiredMixin, CreateView):
 	model = Review
 	fields = ['rating', 'reviewtext']
-
 	def form_valid(self, form, **kwargs):
 		form.instance.product_id = self.kwargs['pk']
 		form.instance.author = self.request.user
@@ -93,11 +92,22 @@ class ReviewCreateView(LoginRequiredMixin, CreateView):
 
 class ReviewDetailView(DetailView):
 	model = Review
-		
-	
+
 class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Review
 	fields = ['rating', 'reviewtext']
+	def form_valid(self, form, **kwargs):
+		form.instance.author = self.request.user
+		return super().form_valid(form)
+	def test_func(self):
+		review = self.get_object()
+		if self.request.user == review.author:
+			return True
+		return False
+
+class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+	model = Review
+	success_url = '/product'
 	def test_func(self):
 		review = self.get_object()
 		if self.request.user == review.author:

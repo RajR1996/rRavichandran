@@ -33,6 +33,7 @@ EMAIL_HOST_PASSWORD = 'pythonapplication'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'Review App <django.reviewapp@zohomail.eu>'
 
 
 

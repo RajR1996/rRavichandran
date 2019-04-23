@@ -1,35 +1,29 @@
 {% extends "reviewApp/base.html" %}
 {% block content %}
 	<div class="row">
-		<div class="col-md-6" style="float: left;">
+		<div class="col-md-4" style="float: left;">
 			{% for prod in Products %}
 			<span>
-				<img class="rounded-square article-img" src="{{prod.productphoto.url}}" style="min-width: 150px; min-height: 150px;max-width: 150px; max-height: 150px">
-				<h1 class="article-title">Name: {{ prod.brand }} {{ prod.name }}</h1>
+				<img class="rounded-square article-img" src="{{prod.productphoto.url}}" style="min-width: 300px; min-height: 220px;max-width: 300px; max-height: 220px">
+			</span>
+		</div>
+		<div class="col-md-4" align="center">
+			<div class="content-section">
+				<h3 class="article-title">Name: {{ prod.brand }} {{ prod.name }}</h3>
 				<h4 class="mr-2">Cost: £{{ prod.cost }}</h4>
 				<h4 class="mr-2">Category: {{ prod.category }}</h4>
 				<h4 class="mr-2">Release Date: {{ prod.releasedate|date:"d/m/Y" }}</h4>
 				<p class="article-content">{{ prod.description }}</p>
-			</span>
-				{% if user.is_authenticated %}
-				<span>
-					{% if Action.count == 1 %}
-						<p>Update</p>
-					{% else %}
-						<a class="btn btn-primary" href="{% url 'review-create' pk=prod.id %}">Create Review</a>
-					{% endif %}
-				</span>
+			</div>
+			<span>
+				{% if Action.count == 0 %}
+					<a class="btn btn-primary" href="{% url 'review-create' pk=prod.id %}">Create Review</a>
 				{% endif %}
+			</span>
 			{% endfor %}
 		</div>
-		<div class="col-md-3" align="center">
-			<div>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae urna porta, egestas mi quis, auctor enim. Vivamus vel sapien risus. Donec ullamcorper felis elit, nec varius massa cursus at. Donec eu tortor aliquet, tincidunt justo vitae, tempus tellus. Sed urna est, porta nec metus ac, pretium scelerisque dui.
-				</p>
-			</div>
-		</div>
-		<div class="col-md-3" style="float: right;">
+
+		<div class="col-md-4" style="float: right;">
 			{% for rev in Reviews %}
 			<div class="card" style="width: 18rem;">
 				<div class="row" style="padding-top: 5%;">
@@ -43,6 +37,12 @@
 				</div>
 			  <div class="card-body">
 			    <p class="card-text">{{ rev.reviewtext }}</p>
+			    {% if rev.author == user %}
+			    	<div style="margin: 0 auto;">	
+			    		<a class="btn btn-warning btn-sm" href="{% url 'review-update' pk=rev.id %}">Update</a>&nbsp;
+			    		<a class="btn btn-danger btn-sm" href="{% url 'review-delete' pk=rev.id %}">Delete</a>
+			    	</div>
+			    {% endif %}
 			  </div>
 			  <span class="card-footer">
 			  	<small class="text-muted">Posted On {{ rev.postdate|date:"d/m/Y H:iA" }}</small>
