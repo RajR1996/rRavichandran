@@ -82,12 +82,13 @@ class ReviewListView(TemplateView):
 	#context_object_name = 'reviews'
 	def get_context_data(self, **kwargs):
 		context = super(ReviewListView, self).get_context_data(**kwargs)
-		context['Reviews'] = Review.objects.all()
+		context['Reviews'] = Review.objects.all().order_by('-postdate')
 		# product_ids = Review.objects.values_list('product_id', flat=True)
 		# profile_ids = Review.objects.values_list('profile_id', flat=True)
 		# context['Products'] = Product.objects.filter(id__in=product_ids)
 		# context['Profiles'] = Profile.objects.filter(id__in=profile_ids)
 		return context
+
 
 class ReviewCreateView(LoginRequiredMixin, CreateView):
 	model = Review
